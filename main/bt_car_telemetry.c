@@ -16,7 +16,7 @@
 #include "freertos/queue.h"
 #include "freertos/semphr.h"
 #include "accelerometer.h"
-// #include "bt_app_init.h"
+#include "bt_a2dp.h"
 
 #define I2C_MASTER_SCL_IO 17        /*!< GPIO number used for I2C master clock */
 #define I2C_MASTER_SDA_IO 16        /*!< GPIO number used for I2C master data  */
@@ -116,6 +116,11 @@ void app_main(void)
 
     TaskHandle_t accelerometer_task_handle;
     xTaskCreate(accelerometer_task, "Acc", 4096, &task_params, tskIDLE_PRIORITY, &accelerometer_task_handle);
+
+    
+    TaskHandle_t bt_task_handle;
+    xTaskCreate(bt_a2dp_task, "Acc", 4096, &task_params, tskIDLE_PRIORITY, &bt_task_handle);
+
 
 
 }
